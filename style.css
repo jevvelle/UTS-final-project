@@ -4,6 +4,8 @@
  --beige:#F7F4D5;  /* Beige */
  --rosy:#D3968C;   /* Rosy brown */
  --mid:#105666;    /* Midnight green */
+ --gold:#E8C45A;   /* medal gold, warm to sit with moss and rosy */
+ --gold-d:#C99A2E; /* medal edge */
  --serif:'Playfair Display',Georgia,serif;
  --sans:'Inter',Arial,sans-serif;
 }
@@ -140,3 +142,15 @@ body.play #switch{display:none}
 #modal{position:fixed;inset:0;z-index:60;background:var(--beige);overflow-y:auto}
 #modal.open{display:block}
 #close{position:fixed;top:14px;right:14px;z-index:70;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+
+/* intro background image */
+#intro .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+#intro::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(10,51,35,.72),rgba(10,51,35,.88));z-index:1}
+#intro>*:not(.bg){position:relative;z-index:2}
+/* win popup */
+#win{position:fixed;inset:0;z-index:90;background:rgba(10,51,35,.88);display:none;align-items:center;justify-content:center;padding:20px}
+#win.open{display:flex}
+.card2{background:var(--beige);color:var(--dark);border-radius:20px;padding:34px 30px;max-width:440px;width:100%;text-align:center}
+.card2 h2{font-size:clamp(28px,6vw,38px);margin:10px 0}
+.medal{width:96px;height:115px;animation:pop .6s ease-out}
+@keyframes pop{from{transform:scale(.3) rotate(-20deg);opacity:0}to{transform:none;opacity:1}}

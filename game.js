@@ -2,12 +2,12 @@
 (()=>{
 const $=id=>document.getElementById(id),cv=$('cv'),ctx=cv.getContext('2d');
 const css2=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const C={dark:css2('--dark'),moss:css2('--moss'),beige:css2('--beige'),rosy:css2('--rosy'),mid:css2('--mid')};
+const C={dark:css2('--dark'),moss:css2('--moss'),beige:css2('--beige'),rosy:css2('--rosy'),mid:css2('--mid'),gold:css2('--gold'),goldD:css2('--gold-d')};
 const WW=1600,WH=1000,IX=800,IY=500,RX=700,RY=420;
 const S=[{id:'p2',t:'From the Editor',x:250,y:520},{id:'p3',t:'Ready for Anything',x:450,y:300},{id:'p4',t:'The Shape of Me',x:720,y:200},{id:'p6',t:'How I Think',x:1010,y:220},{id:'p7',t:'Quiet Steps',x:1260,y:340},{id:'p8',t:'Eight Roles',x:1330,y:580},{id:'p10',t:'Not Yet',x:1060,y:760},{id:'p11',t:'Still Sailing at 28',x:720,y:790}];
 const TREES=[[380,420],[560,450],[900,380],[1150,500],[1160,330],[560,640],[900,650],[430,720],[1200,690],[830,330],[1450,450],[300,330],[1000,540],[640,520],[560,260],[1130,230]];
 const P={x:340,y:610,dir:1,t:0,mv:false},keys={},seen=new Set();
-let W,H,dpr,sc,running=false,last=0,time=0,near=null,target=null,joy={x:0,y:0},modalOpen=false,endShown=false;
+let W,H,dpr,sc,running=false,last=0,time=0,near=null,target=null,joy={x:0,y:0},modalOpen=false,endShown=false,medal=false,winOpen=false;
 const touch=matchMedia('(pointer:coarse)').matches;
 $('hint').textContent=touch?'Drag the joystick or tap the map to walk. Reach a pad, then tap Open.':'Arrow keys or WASD to walk. Reach a pad and press E.';
 
@@ -29,12 +29,22 @@ function openPanel(id){
 }
 function closePanel(){
  $('modal').classList.remove('open');modalOpen=false;
- if(seen.size===8&&!endShown){endShown=true;openPanel('p12')}
+ if(seen.size===8&&!endShown){endShown=true;showWin()}
 }
 $('close').onclick=closePanel;
+function showWin(){winOpen=modalOpen=true;$('win').classList.add('open')}
+$('claim').onclick=()=>{
+ medal=true;$('winT').textContent='Medal claimed';
+ $('winP').textContent='Your character is now wearing it. Thank you for walking through my magazine.';
+ $('winB').innerHTML='<button class="btn" id="keep">Keep exploring</button><button class="btn alt" id="ending">Read the back cover</button>';
+ $('prog').textContent='Adventure complete';
+ $('keep').onclick=()=>{winOpen=modalOpen=false;$('win').classList.remove('open')};
+ $('ending').onclick=()=>{$('win').classList.remove('open');winOpen=false;openPanel('p12')};
+};
 $('act').onclick=()=>{if(near&&!modalOpen)openPanel(near.id)};
 addEventListener('keydown',e=>{
  const k=e.key.toLowerCase();
+ if(winOpen)return;
  if(k==='escape'&&modalOpen){closePanel();return}
  if(modalOpen)return;
  if((k==='e'||k==='enter'||k===' ')&&near){e.preventDefault();openPanel(near.id);return}
@@ -110,19 +120,53 @@ function pad(s,i){
  ctx.fillStyle=C.dark;ctx.beginPath();ctx.roundRect(s.x-w/2,s.y+58,w,28,14);ctx.fill();
  ctx.fillStyle=C.beige;ctx.fillText(s.t,s.x,s.y+73);
 }
+const NAME='Sir Clemuel';   // name shown above his head
+const COL={H:'#1B1B1F',S:'#EDA77F',m:'#B96A55',G:'#17171A',e:'#17171A',T:'#2F7F7A',B:'#8A8F99',P:'#1F2433',O:'#4A2F25'};
+const BODY=[
+'.....HHHHHHH.....',
+'....HHHHHHHHH....',
+'...HHHHHHHHHHH...',
+'..HHHHHHHHHHHHH..',
+'..HHSSSSSSSSSHH..',
+'..HHSGGSSSGGSHH..',
+'..HHGSeGSGeSGHH..',
+'..HHGSSGSGSSGHH..',
+'..HHSGGSSSGGSHH..',
+'...HSSSSSSSSSH...',
+'....SSSSmSSSS....',
+'.....SSSSSSS.....',
+'......SSSSS......',
+'...TTTTTTTTTTT...',
+'..TTTTTTTTTTTTT..',
+'..TTTTTTTTTTTTT..',
+'..TTTTTTTTTTTTT..',
+'..SSTTTTTTTTTSS..',
+'..SSTTTTTTTTTSS..',
+'..SSBBBBBBBBBSS..',
+'....PPPPPPPPP....',
+'....PPPPPPPPP....'];
+const bodyCv=(()=>{const c=document.createElement('canvas');c.width=17;c.height=BODY.length;const x=c.getContext('2d');
+ BODY.forEach((r,y)=>[...r].forEach((ch,i)=>{if(COL[ch]){x.fillStyle=COL[ch];x.fillRect(i,y,1,1)}}));return c})();
 function player(){
- ctx.save();ctx.translate(P.x,P.y);ell(0,14,18,7,'rgba(10,51,35,.3)');
+ const px=2.5,top=18-28*px,left=-8.5*px;
+ ctx.save();ctx.translate(P.x,P.y);ell(0,17,20,6,'rgba(10,51,35,.3)');
  ctx.scale(P.dir,1);
- const sw=P.mv?Math.sin(P.t*14)*6:0,bob=P.mv?Math.abs(Math.sin(P.t*14))*-2:0;
- ctx.translate(0,bob);
- ctx.fillStyle=C.dark;ctx.fillRect(-9,4,7,14+sw*.4);ctx.fillRect(2,4,7,14-sw*.4);        // legs
- ctx.fillStyle=C.mid;ctx.beginPath();ctx.roundRect(-13,-22,26,30,7);ctx.fill();           // shirt
- ctx.fillStyle=C.rosy;ctx.fillRect(-17,-20,5,16+sw*.5);ctx.fillRect(12,-20,5,16-sw*.5);    // arms
- ell(0,-34,13,13,'#F1C9A0');                                                               // head
- ctx.fillStyle=C.dark;ctx.beginPath();ctx.ellipse(0,-39,13,9,0,Math.PI,0);ctx.fill();     // hair
- ctx.strokeStyle=C.dark;ctx.lineWidth=2;                                                   // glasses
- ctx.beginPath();ctx.arc(-6,-34,5,0,7);ctx.moveTo(11,-34);ctx.arc(6,-34,5,0,7);ctx.moveTo(-1,-34);ctx.lineTo(1,-34);ctx.stroke();
+ const s=P.mv?Math.sin(P.t*14):0;ctx.translate(0,P.mv?Math.abs(s)*-2:0);
+ const leg=(col,sx,lift)=>{const x=left+col*px,y=top+22*px,h=(4-lift)*px;
+  ctx.fillStyle=COL.P;ctx.fillRect(x,y-.5,4*px,h+.5);
+  ctx.fillStyle=COL.O;ctx.fillRect(left+sx*px,y+h,5*px,2*px)};
+ leg(4,3,P.mv?Math.max(0,s)*1.6:0);leg(9,9,P.mv?Math.max(0,-s)*1.6:0);
+ ctx.imageSmoothingEnabled=false;ctx.drawImage(bodyCv,left,top,17*px,BODY.length*px);
+ if(medal){ctx.fillStyle=C.rosy;ctx.beginPath();ctx.moveTo(-7,-19);ctx.lineTo(0,-8);ctx.lineTo(7,-19);ctx.lineTo(3,-19);ctx.lineTo(0,-13);ctx.lineTo(-3,-19);ctx.fill();
+  ctx.beginPath();ctx.arc(0,-7,6.5,0,7);ctx.fillStyle=C.gold;ctx.fill();ctx.lineWidth=2.5;ctx.strokeStyle=C.goldD;ctx.stroke()}
  ctx.restore();
+ // name plate
+ ctx.save();ctx.translate(P.x,P.y+top-32);
+ ctx.font='600 13px Inter,Arial,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+ const w=ctx.measureText(NAME).width+22;
+ ctx.fillStyle=C.dark;ctx.beginPath();ctx.roundRect(-w/2,0,w,24,12);ctx.fill();
+ ctx.lineWidth=2;ctx.strokeStyle=C.rosy;ctx.stroke();
+ ctx.fillStyle=C.beige;ctx.fillText(NAME,0,12.5);ctx.restore();
 }
 resize();
 
