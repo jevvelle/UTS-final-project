@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>In Omnia Paratus: The Jewelle Issue</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2716%27 fill=%27%230A3323%27/%3E%3Cpath d=%27M16 6l4 10-4 10-4-10z%27 fill=%27%23D3968C%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head><body>
+
+<div id="intro">
+ <div class="tag">The Jewelle Issue</div>
+ <h1>IN OMNIA<br>PARATUS</h1>
+ <p>A magazine you can walk through.</p>
+ <div class="row"><button class="btn" id="goPlay">Start the adventure</button><button class="btn alt" id="goRead">Read normally</button></div>
+</div>
+<div id="game">
+ <canvas id="cv"></canvas>
+ <div class="hud"><span class="pill" id="prog">0 of 8 stops</span><button class="btn small alt" id="hudRead">Read normally</button></div>
+ <div class="pill" id="hint"></div>
+ <button class="btn" id="act">Open</button>
+ <div id="joy"><div id="knob"></div></div>
+</div>
+<button class="btn small" id="switch">Walk the island</button>
+<div id="modal"><button class="btn small" id="close">Close</button><div id="mbody"></div></div>
+<main id="mag">
+<section class="cover" id="p1">
+ <div class="ph"><span>image-1.png<br>Cover photo: you at a competition, looking off-frame</span><img src="image-1.png" alt="Cover photo: you at a competition, looking off-frame" onerror="this.parentNode.classList.add('miss')"></div>
+ <div><h1>IN OMNIA PARATUS</h1><div class="tg">Ready for anything.</div></div>
+ <div class="low">
+  <div><div class="nm">Jewelle Riyanne N. Rafa</div><div>BS ECE 1A, Bulacan State University</div><br>
+  <ul><li>Ready for anything: the quote I live by</li><li>The numbers behind my personality</li><li>Eight roles, one timeline</li><li>Still sailing at 28</li></ul></div>
+ </div>
+</section>
+
+<section class="pg" id="p2">
+ <div class="tag">The Jewelle Issue</div>
+ <div class="cols" style="margin-top:20px">
+  <div><h3 style="font-size:34px;margin-bottom:14px">Contents</h3>
+   <ul class="toc">
+    <li><b>3</b><span data-ic="compass"></span>&nbsp;<a href="#p3">Ready for Anything</a></li>
+    <li><b>4</b><span data-ic="chart"></span>&nbsp;<a href="#p4">The Shape of Me</a></li>
+    <li><b>6</b><span data-ic="mirror"></span>&nbsp;<a href="#p6">How I Think</a></li>
+    <li><b>7</b><span data-ic="book"></span>&nbsp;<a href="#p7">Quiet Steps</a></li>
+    <li><b>8</b><span data-ic="clock"></span>&nbsp;<a href="#p8">Eight Roles</a></li>
+    <li><b>10</b><span data-ic="suitcase"></span>&nbsp;<a href="#p10">Not Yet</a></li>
+    <li><b>11</b><span data-ic="ship"></span>&nbsp;<a href="#p11">Still Sailing at 28</a></li>
+   </ul></div>
+  <div><h2 style="font-size:40px;margin:0 0 14px">From the Editor</h2>
+   <p>This issue is a self-portrait built from six class activities. It has my philosophy, my test results, my habits, my timeline, and a letter to the person I will be at 28. Some of the numbers surprised me. Some of the memories are not easy to print. I kept them in anyway.</p>
+   <div class="ph round"><span>image-2.png<br>Portrait</span><img src="image-2.png" alt="Portrait" onerror="this.parentNode.classList.add('miss')"></div><div class="sig">Jewelle</div></div>
+ </div>
+</section>
+
+<section class="pg dark" id="p3">
+ <div class="big">IN OMNIA<br>PARATUS</div>
+ <div class="circuit" style="margin-top:30px"></div>
+ <div class="cols">
+  <div><div class="ph"><span>image-3.png<br>Gilmore Girls DVDs or favorite mug (your own photo)</span><img src="image-3.png" alt="Gilmore Girls DVDs or favorite mug (your own photo)" onerror="this.parentNode.classList.add('miss')"></div><div class="cap">In omnia paratus. From Gilmore Girls, kept for life.</div></div>
+  <div><div class="tag">Philosophy</div><h2 style="margin-left:0">Ready for Anything</h2>
+   <p class="lead">Even in the smallest decisions I make, I feel challenged.</p>
+   <p>There is something about this feeling that makes me want to move forward more. When I watched Gilmore Girls, one quote stayed with me: "In omnia paratus," or ready for anything. I do not have the power to see what will happen to me in the future, but I know that I am ready. The challenge is not doubt or uncertainty. It is motivation, a push to do everything wholeheartedly.</p>
+   <p>I am not a master of everything, but I am ready. Knowing that this is carved into who I am makes every day meaningful. Life is and will always be hard, but this is me, and I am ready for anything.</p>
+   <div class="pq">"I am not a master of everything but I am ready."</div></div>
+ </div>
+</section>
+
+<section class="pg" id="p4">
+ <div class="circuit"></div><div class="tag">Personality</div>
+ <h2>The Shape of Me</h2><div class="sub">My HEXACO results, and the parts I argued with</div>
+ <div class="cols">
+  <div><div id="radar"></div><div class="cap" style="text-align:center">Six factors, one person. Scores out of 7. The star marks the highest.</div>
+   <div class="pq">"I don't think any forced-choice questionnaire can fully capture something as fluid as the self."</div></div>
+  <div id="cards"></div>
+ </div>
+ <div class="cols" style="margin-top:30px">
+  <div><p class="lead">Conscientiousness came out on top at 5.67, driven by Prudence (6.09) and Organization (5.81).</p>
+   <p>For the most part, the results felt accurate. The traits I expected to be low, like Anxiety (2.87) and Dependence (2.98), came out low, which matches how I actually experience myself day to day.</p>
+   <p>Aesthetic Appreciation at 6.15 gave me pause. I like music, but I wouldn't say I'm moved by it the way that number suggests. Personality tests work like most self-knowledge: we build a picture of ourselves from fragments, and sometimes one fragment gets overweighted. A single question about music could have pulled that whole subtrait up.</p></div>
+  <div><p>What actually surprised me was Patience at 5.08 and Prudence at 6.09. I would have guessed I lean impulsive, especially under pressure. Maybe patience isn't about staying calm in the moment. Maybe it is about how I approach decisions overall, weighing consequences and holding back before I commit. I might not experience myself as patient, but if my actions consistently show restraint, then that is what patience is.</p>
+   <div class="pq">"It made me think about the difference between how a trait feels from the inside and how it shows up in behavior."</div></div>
+ </div>
+ <div class="side"><h3>Three Surprises</h3>
+  <p><b>Aesthetic Appreciation, 6.15.</b> Is it really me?</p>
+  <p><b>Patience, 5.08.</b> Not how it feels, but it fits how I act.</p>
+  <p style="margin:0"><b>Prudence, 6.09.</b> Near the top of the scale.</p></div>
+</section>
+
+<section class="pg mid" id="p6">
+ <div class="tag">Multiple Intelligences</div><h2>How I Think</h2><div class="sub">My intelligence profile, led by logic</div>
+ <div class="cols">
+  <div class="ph" style="min-height:420px"><span>image-4.png<br>You at a robotics build table, notebook or circuit board in frame</span><img src="image-4.png" alt="You at a robotics build table, notebook or circuit board in frame" onerror="this.parentNode.classList.add('miss')"></div>
+  <div><p class="lead">Logical/Mathematical is my highest at 84%, and I am not surprised.</p>
+   <p>That result feels shaped by years of choices: how I was raised, what I studied, why I ended up in engineering. I have always needed things to make sense before I accept them, to follow some internal logic rather than just intuition.</p>
+   <p>The Intrapersonal score of 72% resonated too. I spend a lot of time examining my own reasoning and questioning why I believe what I believe, almost as if understanding myself is its own logical problem to solve. People are supposed to change as they grow older, and I think I have in small ways. But the core of how I think, methodical, reflective, wanting reasons rather than assumptions, has stayed remarkably consistent.</p></div>
+ </div>
+ <div class="mi" id="mi"></div>
+ <div class="pq" style="margin-top:40px">"The test didn't just describe me. It confirmed something I already suspected but never had the language to prove."</div>
+</section>
+
+<section class="pg" id="p7">
+ <div class="tag">Mindset</div><h2>Quiet Steps</h2><div class="sub">Three ways I look after my mind</div>
+ <div class="steps">
+  <div class="step"><div class="n">1</div><div><h3>Realistic goals</h3><p>In junior high, everyone felt super competitive. People joined tons of orgs, competed everywhere, and got crazy high grades. I felt pressured to do the same, and it was not healthy. In senior high I realized it is okay not to do everything. What matters is being true to myself, so now I join the orgs I actually care about.</p></div><div class="ph"><span>image-5.png<br>Desk lit by a lamp</span><img src="image-5.png" alt="Desk lit by a lamp" onerror="this.parentNode.classList.add('miss')"></div></div>
+  <div class="step"><div class="n">2</div><div><h3>Being okay with boredom</h3><p>Life is not always going to be at its peak, and I will not always be at my best. Taking care of my mental health means doing the quiet, boring steps, like resting and trying. Even when studying alone feels boring, I accept it because I know I will get through it.</p></div><div class="ph"><span>image-6.png<br>A cup and a book</span><img src="image-6.png" alt="A cup and a book" onerror="this.parentNode.classList.add('miss')"></div></div>
+  <div class="step"><div class="n">3</div><div><h3>Shows and books that get me</h3><p>I love sitcoms. Feeling like part of those shows makes my mind feel light. It is not just a distraction. It gives me mental comfort to unplug from society for a bit and just chill.</p></div><div class="ph"><span>image-7.png<br>Laptop mid-episode</span><img src="image-7.png" alt="Laptop mid-episode" onerror="this.parentNode.classList.add('miss')"></div></div>
+ </div>
+ <div class="pq">"It is okay not to do everything."</div>
+</section>
+
+<section class="pg dark" id="p8">
+ <div class="tag">Timeline</div><h2>Eight Roles</h2><div class="sub">A timeline of who I was and who was beside me</div>
+ <svg class="wave" viewBox="0 0 1000 30" preserveAspectRatio="none"><path d="M0 15 Q 62 0 125 15 T 250 15 T 375 15 T 500 15 T 625 15 T 750 15 T 875 15 T 1000 15" fill="none" stroke="#D3968C" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/></svg>
+ <div class="tl" id="tl">
+  <div class="stop"><div class="n">1</div>
+   <div class="ph"><span>image-8.png</span><img src="image-8.png" alt="Baby or childhood photo" onerror="this.parentNode.classList.add('miss')"></div>
+   <b>Infant</b><p>Completely reliant on my family. I had no words, so every need was communicated by crying.</p></div>
+  <div class="stop"><div class="n">2</div>
+   <div class="ph"><span>image-9.png</span><img src="image-9.png" alt="Baby or childhood photo" onerror="this.parentNode.classList.add('miss')"></div>
+   <b>Early childhood</b><p>My first words let me share basic ideas with my parents. Early social learning, preparing me for formal school.</p></div>
+  <div class="stop"><div class="n">3</div>
+   <div class="ph"><span>image-10.png</span><img src="image-10.png" alt="Baby or childhood photo" onerror="this.parentNode.classList.add('miss')"></div>
+   <b>Elementary student</b><p>Unsolicited comments about my body shaped how I saw myself around peers.</p></div>
+  <div class="stop"><div class="n">4</div>
+   <div class="ph"><span>image-11.png</span><img src="image-11.png" alt="School or family photo" onerror="this.parentNode.classList.add('miss')"></div>
+   <b>Grade 7: Older sister</b><p>After twelve years as the youngest, a baby sister changed my family dynamics. I was unsure how to navigate my new role.</p></div>
+  <div class="stop"><div class="n">5</div>
+   <div class="ph"><span>image-12.png</span><img src="image-12.png" alt="School or family photo" onerror="this.parentNode.classList.add('miss')"></div>
+   <b>Junior high: Robotics team</b><p>A new school opened new opportunities. I joined the robotics team and found a real passion for STEM.</p></div>
+  <div class="stop"><div class="n">6</div>
+   <div class="ph"><span>image-13.png</span><img src="image-13.png" alt="School or family photo" onerror="this.parentNode.classList.add('miss')"></div>
+   <b>Senior high: Robotics competitor</b><p>Continuing robotics made learning deeply engaging and fun.</p></div>
+  <div class="stop"><div class="n">7</div>
+   <div class="ph"><span>image-14.png</span><img src="image-14.png" alt="BulSU photo" onerror="this.parentNode.classList.add('miss')"></div>
+   <b>College entry</b><p>Getting into Bulacan State University was a turning point toward independence, with a renewed sense of purpose.</p></div>
+  <div class="stop"><div class="n">8</div>
+   <div class="ph"><span>image-15.png</span><img src="image-15.png" alt="BulSU photo" onerror="this.parentNode.classList.add('miss')"></div>
+   <b>Now: BulSU student and competitor</b><p>I represent my school in academic competitions, and each one strengthens my identity as a dedicated scholar.</p></div>
+ </div>
+ <div class="cols" style="margin-top:30px">
+  <div class="side" style="background:rgba(247,233,178,.12);margin:0"><h3>Closest and Furthest</h3>
+   <p><b>Closest: Robotics Competitor and Active College Student.</b> In these roles I feel capable, creative, and motivated because I am doing things out of genuine interest, not just complying with expectations.</p>
+   <p style="margin:0"><b>Furthest: The Self-Conscious Peer.</b> That identity was built on other people's comments, not my own choices or accomplishments. It feels the most distant from who I am today.</p></div>
+  <div class="pq" style="margin:0">"These roles helped me move away from self-doubt and build an identity grounded in teamwork, problem-solving, and active participation."</div>
+ </div>
+</section>
+
+<section class="pg" id="p10">
+ <div class="tag">Wish List</div><h2>Not Yet</h2><div class="sub">Three things I think will make me happy</div>
+ <div class="map"><div class="pins"><span class="pin">Panama</span><i></i><span class="pin">T&uuml;rkiye</span><i></i><span class="pin">Colombia</span><i></i><span class="pin">Greece</span><i></i><span class="pin">Bahrain</span><i></i><span class="pin next">Next?</span></div></div>
+ <div class="cols"><div class="ph" style="min-height:300px"><span>image-16.png<br>You at a competition venue</span><img src="image-16.png" alt="You at a competition venue" onerror="this.parentNode.classList.add('miss')"></div>
+ <div class="strip" style="border:0;padding-top:0"><span data-ic="suitcase"></span><div><b>Travel the world</b>I first went abroad at 15 for a competition in Panama. Since then, competitions have taken me to T&uuml;rkiye, Colombia, Greece, and Bahrain. It was fun, but I want to travel as a tourist, not a competitor. Back then, our coaches took our phones, so we could not take photos or go sightseeing. One day I want to travel on my own terms and just enjoy different cultures.</div></div></div>
+ <div class="strip"><span data-ic="chip"></span><div><b>Become a PECE</b>I have big goals for myself. Becoming a licensed engineer is step one, but the main dream is to become a Professional Electronics Engineer. It is a huge title, but that is really what I am working toward.</div></div>
+ <div class="strip"><span data-ic="family"></span><div><b>Do it while my parents are here</b>They have supported me in every way they can. I want to reach these goals while they are still alive, so they can witness the person I promise to become.</div></div>
+ <div class="pq">"One day, I want to travel on my own terms."</div>
+</section>
+
+<section class="pg moss" id="p11">
+ <div class="tag">Closing</div>
+ <div class="cols" style="margin-top:14px">
+  <div class="letter"><div class="stamp">28</div>
+   <h2 style="margin:0 0 6px;font-size:42px">Still Sailing at 28</h2><div class="sub">A letter to the person I will be in ten years</div>
+   <div class="hand">Dear future me,</div>
+   <p class="lead">Ten years from now, I will be somewhere between 25 and 30, the age when the brain is said to be fully mature.</p>
+   <p>Right now I am a first-year engineering student and a woman in STEM, with a lot I still want to show the world. Since junior high, I have been part of teams that built innovations for marginalized communities. I trust that I will still be doing that kind of work by then, only with better skills and a clearer mind. My goal is to build something that gets patented and actually used by the people it was made for.</p>
+   <p>People say One Piece is too long to start, and they miss how good it is because they never stay for the payoff. Ten years can feel the same. It is easy to want results right away. But I think the person I become will be more patient than I am now. Today every mistake feels bigger than it is. By 25 or 30, I hope to understand that good work takes time, and that falling short once says nothing about what I am capable of. I also hope to be more comfortable asking for help, because the best projects I have been part of were never done alone. No captain reaches the end of the sea without a crew.</p>
+   <p>Relationships are something I rarely think about. There is so much to do in so little time that I am not sure where it would fit. That may change, and it would be okay if it does. What I am sure about is my family. My parents and my sisters are the reason I can dream this big without being afraid of failing. Ten years from now, I want to be just as close to them as I am today.</p>
+   <p>Whatever else changes, the values that shaped me should stay. Humility, caring about others, and the drive to keep going are the parts of me I would never trade for a more polished version. I do not want to become someone who forgets where she started. I expect to be a different person by then, but I hope she still feels the same excitement when something she built helps someone.</p></div>
+  <div><div class="ph" style="min-height:520px"><span>image-17.png<br>Sea or horizon, or you and your family</span><img src="image-17.png" alt="Sea or horizon, or you and your family" onerror="this.parentNode.classList.add('miss')"></div>
+   <div class="pq">"No captain reaches the end of the sea without a crew."</div>
+   <div class="pq">"I hope she still feels the same excitement when something she built helps someone."</div>
+   <div class="ship" data-ic="ship"></div></div>
+ </div>
+</section>
+
+<section class="pg mid back" id="p12"><div data-ic="compass"></div><h2>In omnia paratus.</h2><small>Jewelle Riyanne N. Rafa &middot; BS ECE 1A</small></section>
+
+</main>
+<script src="script.js"></script>
+<script src="game.js"></script>
+</body></html>
