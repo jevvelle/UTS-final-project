@@ -116,6 +116,7 @@ function pad(s,i){
  ctx.strokeStyle=C.dark;ctx.fillStyle=C.dark;
  if(v){ctx.lineWidth=7;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(s.x-14,s.y);ctx.lineTo(s.x-4,s.y+11);ctx.lineTo(s.x+16,s.y-12);ctx.stroke()}
  else{ctx.font='900 34px Playfair Display,Georgia,serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(i+1,s.x,s.y+2)}
+ ctx.textAlign='center';ctx.textBaseline='middle';
  ctx.font='600 15px Inter,Arial,sans-serif';const w=ctx.measureText(s.t).width+22;
  ctx.fillStyle=C.dark;ctx.beginPath();ctx.roundRect(s.x-w/2,s.y+58,w,28,14);ctx.fill();
  ctx.fillStyle=C.beige;ctx.fillText(s.t,s.x,s.y+73);
